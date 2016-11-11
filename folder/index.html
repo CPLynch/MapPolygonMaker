@@ -1,0 +1,45 @@
+
+<html>
+<head>
+
+<link href='map.css' rel='stylesheet'>
+</head>
+<body>
+
+<div id='map_container'>
+
+	
+	<div>
+		<h2>Level of polygon resolution and accuracy</h2>
+		<ul id='map_settings'>
+			<li id='s1'>1 (low)</li>
+			<li id='s2'>2</li>
+			<li id='s3' class='selected_setting'>3</li>
+			<li id='s4'>4</li>
+			<li id='s5'>5 (high)</li>
+			<li id='s6'>6 (Very high - no filter, follows mouse)</li>
+	</div>
+	
+	<div id="draw"><a href="#">Click Here to Start Dawing</a></div>
+	
+
+	<div id="map_canvas"></div>
+	
+	
+	<div>
+		<h2>Number of Points Plotted</h2>
+		<p id='numPoints'>Number of Points Plotted:</p>
+	</div>
+
+	<div>
+		<h2>GeoJson String</h2>
+		<p id='geoJson'>String will appear here!</p>
+	</div>
+</div>
+
+<script 
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXnxtTWDNr5YEcV9QSyxvbAfDhDV3pPXY&callback=initMap" async defer>
+</script>
+<script type="text/javascript" src='map.js'></script>
+</body>
+</html>
