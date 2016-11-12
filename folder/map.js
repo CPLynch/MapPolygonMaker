@@ -85,7 +85,7 @@ function initMap() {
             clickable: false
         });
         //move-listener
-        var move = google.maps.event.addListener(map, 'mousemove', function(e) {
+        move = google.maps.event.addListener(map, 'mousemove', function(e) {
             poly.getPath().push(e.latLng);
         });
         clickCounter++;
@@ -105,9 +105,10 @@ function initMap() {
             enable()
 
         });
+		
     }
     var clickCounter = 0;
-    document.querySelector('#draw a').addEventListener('click', function(e) {
+    document.querySelector('#draw').addEventListener('click', function(e) {
         e.preventDefault();
         if (clickCounter > 0) {
             poly.getPath().clear();
@@ -193,7 +194,8 @@ function getLatLng() {
 
 
     }
-    document.querySelector('#numPoints').innerHTML = 'Number of Points Plotted: ' + poly.getPath().b.length;
+	console.log(poly.getPath().b.length);
+    document.querySelector('#numPoints').innerHTML = 'GeoJSON - Number of Points Plotted: ' + poly.getPath().b.length;
     latlngArr.push(latlngArr[0]);
     var geoJsonObj = {
         "type": "Feature",
@@ -241,4 +243,7 @@ function latlngdis(cood1, cood2) {
     return d;
 }
 
-
+//Clear for everything incase of unforseen bugs
+document.getElementById('reset').onclick=function(){
+	document.location.reload()
+}

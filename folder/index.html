@@ -9,25 +9,34 @@
 <div id='map_container'>
 	
 	<div id="map_canvas">
-		<div id="draw"><a href="#">Click to start new polygon</a></div>
 		
-		<div id='settings_div'>
-			<p>Polygon Precision (low to high)</p>
-			<ul id='map_settings'>
-				<li id='s1'>1</li>
-				<li id='s2'>2</li>
-				<li id='s3' class='selected_setting'>3</li>
-				<li id='s4'>4</li>
-				<li id='s5'>5</li>
-				<li id='s6'>6</li>
+		<div id='map_top_bar'>
+		
+			<div id='reset'>
+				<p>Reset</p>
+			</div>
+			
+			<div id="draw"><a>Click to start new polygon</a></div>
+			
+			<div id='settings_div'>
+				<p>Polygon Precision (low to high)</p>
+				<ul id='map_settings'>
+					<li id='s1'>1</li>
+					<li id='s2'>2</li>
+					<li id='s3' class='selected_setting'>3</li>
+					<li id='s4'>4</li>
+					<li id='s5'>5</li>
+					<li id='s6'>6</li>
+			</div>
+			
+			
 		</div>
 		
 	</div>
 	
 
 	<div id='geojson_container'>
-		<h2>GeoJson Output</h2>
-		<p id='numPoints'>Number of Points Plotted:</p>
+		<p id='numPoints'>GeoJson Output - Number of Points Plotted:</p>
 		<p id='geoJson'></p>
 	</div>
 	
