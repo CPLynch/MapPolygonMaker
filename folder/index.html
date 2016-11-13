@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<div id='map_container'>
+	<div id='map_container'>
 	
 	<div id="map_canvas">
 		
@@ -16,7 +16,7 @@
 				<p>Reset</p>
 			</div>
 			
-			<div id="draw"><a>Click to start new polygon</a></div>
+			<div id="draw"><a href="#">Click to start new polygon</a></div>
 			
 			<div id='settings_div'>
 				<p>Polygon Precision (low to high)</p>
@@ -34,21 +34,22 @@
 		
 	</div>
 	
-
+	<div id='postcode_container'>
+		<h3>Postcode tester</h3>
+		<input placeholder='Enter a postcode' id='postcode_input'>
+		<p>Click to see if this postcode is within the polygon bounds</p>
+		<button id='postcode_test' >Test</button>
+	</div>
 	<div id='geojson_container'>
-		<p id='numPoints'>GeoJson Output - Number of Points Plotted:</p>
+		<p id='numPoints'><span class='bold'>GeoJSON -</span> Number of Points Plotted:</p>
 		<p id='geoJson'></p>
 	</div>
 	
-	
-	
-	
-	
-</div>
-
+<script type="text/javascript" src='wherewolf.js'></script>
+<script type="text/javascript" src='map.js'></script>
 <script 
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXnxtTWDNr5YEcV9QSyxvbAfDhDV3pPXY&callback=initMap" async defer>
 </script>
-<script type="text/javascript" src='map.js'></script>
+
 </body>
 </html>

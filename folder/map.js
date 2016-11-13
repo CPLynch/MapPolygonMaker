@@ -1,4 +1,4 @@
-
+var geoJsonObj;
 
 //Start of Sensitivity Section Logic
 var sensitivitySettings = {
@@ -197,7 +197,7 @@ function getLatLng() {
 	console.log(poly.getPath().b.length);
     document.querySelector('#numPoints').innerHTML = 'GeoJSON - Number of Points Plotted: ' + poly.getPath().b.length;
     latlngArr.push(latlngArr[0]);
-    var geoJsonObj = {
+    geoJsonObj = {
         "type": "Feature",
         "properties": {
             "id": "polygon",
@@ -222,7 +222,12 @@ function getLatLng() {
 
 
     document.querySelector('#geoJson').innerHTML = geoJsonString;
+	
     return latlngArr;
+	
+	
+	
+	
 }
 
 
@@ -247,3 +252,42 @@ function latlngdis(cood1, cood2) {
 document.getElementById('reset').onclick=function(){
 	document.location.reload()
 }
+
+//postcode tester
+	document.querySelector('#postcode_test').addEventListener('click',function(){
+		var postcode=document.querySelector('#postcode_input').value;
+		console.log(postcode);
+		var httpRequest = new XMLHttpRequest();
+		httpRequest.open('GET','http://api.postcodes.io/postcodes/'+postcode);
+		httpRequest.send();
+		httpRequest.onreadystatechange= function(){
+			if(httpRequest.readyState == 4){
+				var parsedResponse = JSON.parse(httpRequest.response)
+				console.log('Status: '+parsedResponse.status);
+				if(parsedResponse.status!=200){
+					document.querySelector('#postcode_container p').innerHTML='Cant find Postcode!';
+					return;
+				}	else if(!geoJsonObj){
+					document.querySelector('#postcode_container p').innerHTML='No geoJson to compare!';
+					return;
+				}
+				
+				var youngWolf = Wherewolf();
+				var geodata = geoJsonObj
+				youngWolf.add("matched",geodata);
+				var postcodelnglat = [parsedResponse.result.longitude, parsedResponse.result.latitude]
+				var results = youngWolf.find(postcodelnglat);
+				if(results.matched){
+					console.log(results.matched);
+					document.querySelector('#postcode_container p').innerHTML='Yes, it is within the polygon boundry';
+				}	else{
+					console.log(results.matched);
+					document.querySelector('#postcode_container p').innerHTML='No, this seems to be outside the polygon boundry';
+				}
+			}
+		}
+	
+		
+		
+	})
+	
